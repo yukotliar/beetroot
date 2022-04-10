@@ -4,4 +4,4 @@
 # with a white space in between and print a greeting.
 first_name = 'Yurii'
 last_name = 'Kotliar'
-print('Ave, ' + first_name + ' ' + last_name + '!', sep=' ')
+print('Ave, ' + first_name + ' ' + last_name + '!')
