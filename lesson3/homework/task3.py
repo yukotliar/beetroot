@@ -6,6 +6,6 @@
 stored_name = 'yurii'
 entered_name = input('Enter your name: ')
 if entered_name.lower() == stored_name:
-    print(f'I recognize you, {stored_name}!')
+    print(f'I recognize you, {stored_name.capitalize()}!')
 else:
     print('I don\'t recognize you, scammer!')
