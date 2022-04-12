@@ -1,7 +1,8 @@
-# Manipulate strings.
-# Save your first and last name as separate variables,
-# then use string concatenation to add them together
-# with a white space in between and print a greeting.
-first_name = 'Yurii'
-last_name = 'Kotliar'
-print('Ave, ' + first_name + ' ' + last_name + '!')
+# Create a python program named "task2", and use the built-in function 'print' in it several times.
+# Try to pass "sep", "end" params and pass several parameters separated by commas.
+# Also, provide a comment text above each print statement, mentioned above,
+# with the expected output after execution of the particular print statement.
+print('lorem', 'ipsum', 'lorem', 'ipsum', end='\n')
+# this prints several strings with default sep and '\n' end parameter (new line)
+print('lorem', 'ipsum', 'lorem', 'ipsum', sep='_')
+# this prints several strings with default end and '_' sep parameter
