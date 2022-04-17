@@ -16,6 +16,9 @@ morse = { 'A':'.-', 'B':'-...',
                     '0':'-----', ', ':'--..--', '.':'.-.-.-',
                     '?':'..--..', '/':'-..-.', '-':'-....-',
                     '(':'-.--.', ')':'-.--.-'}
-phrase = input('Enter a word to be transformed to Morse: ').upper()
+phrase = input('Enter a phrase to be transformed to Morse: ').upper()
 for i in phrase:
-    print(morse[i], end=' ')
+    if i in morse:
+        print(morse[i], end=' ')
+    else:
+        print(end='   ')
