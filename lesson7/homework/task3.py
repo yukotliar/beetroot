@@ -1,5 +1,3 @@
-# Task 3
-#
 # List comprehension exercise
 #
 # Use a list comprehension to make a list containing tuples (i, j)

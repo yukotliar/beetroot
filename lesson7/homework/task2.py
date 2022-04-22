@@ -1,5 +1,3 @@
-# Task 2
-#
 # Create a function which takes as input two dicts with structure mentioned below,
 # then computes and returns the total price of stock.
 

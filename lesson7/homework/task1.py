@@ -1,5 +1,3 @@
-# Task 1
-#
 # Make a program that has some sentence (a string) on input
 # and returns a dict containing all unique words as keys and the number of occurrences as values.
 text = 'accusantibus aeternum aiebat alienae aliquem delectat dici appellant bonum confidam constituamus cubilia curiosi cyrenaicos ' \
