@@ -12,8 +12,7 @@
 def make_operation(operator, *args):
     value = args[0]
     if operator == '+':
-        for index in range(1, len(args)):
-            value += args[index]
+        value = sum(args)
     elif operator == '-':
         for index in range(1, len(args)):
             value -= args[index]
