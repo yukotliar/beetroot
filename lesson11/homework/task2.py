@@ -22,6 +22,14 @@ new_data = {
     "country": ""
 }
 
+search_data = {
+    "sf": "first_name",
+    "sl": "last_name",
+    "sp": "phone",
+    "sct": "city",
+    "sc": "country"
+}
+
 field_names = ["ім'я", "прізвище", "номер телефону", "місто", "країну"]
 
 
@@ -31,7 +39,6 @@ def input_contact():
         our_data[key] = input(f'Введіть {name}: ')
     return our_data
 
-input_contact()
 
 def read_commands():
     print("Достпуні команди:",
@@ -49,15 +56,15 @@ def read_commands():
     if command == 'n':
         pass
     elif command in ['sf', 'sl', 'sfl', 'sp', 'sct', 'sc']:
-        pass
+        search(command, input('Введіть запит для пошуку: '))
     elif command == 'up':
         pass
     elif command == 'del':
-        pass
+        delete(input('Введіть номер телефону: '))
     elif command == 'exit':
         pass
     else:
-        print('Введена вами команда не коректна :(')
+        print('Введена вами команда не коректна')
 
 
 def print_result(results):
@@ -69,10 +76,39 @@ def print_result(results):
 def save_data(data):
     with open('data.json', 'r') as data_file:
         database = json.load(data_file)
-    with open('data.json', 'w', encoding='utf-8') as data_file:
+    with open('data.json', 'w') as data_file:
         database.append(data)
-        json.dump(database, data_file)
+        json.dump(database, data_file, indent=2)
 
+
+def search(command, request):
+    with open('data.json', 'r') as data_file:
+        database = json.load(data_file)
+    if command == 'sfl':
+        for item in database:
+            if item['first_name'] + ' ' + item['last_name'] == request:
+                return item
+            else:
+                return 'За вашим запитом нічого не знайдено'
+    else:
+        for item in database:
+            if item[search_data[command]] == request:
+                return item
+            else:
+                return 'За вашим запитом нічого не знайдено'
+
+
+def delete(phone):
+    with open('data.json', 'r') as data_file:
+        database = list(json.load(data_file))
+    with open('data.json', 'w') as data_file:
+        for item in database:
+            if item['phone'] == phone:
+                database.remove(item)
+                json.dump(database, data_file, indent=2)
+            else:
+                return 'За вашим запитом нічого не знайдено'
 
 if __name__ == '__main__':
-    save_data(input_contact())
+    # save_data(input_contact())
+    read_commands()

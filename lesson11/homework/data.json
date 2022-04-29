@@ -1,0 +1,23 @@
+[
+  {
+    "first_name": "John",
+    "last_name": "Senior",
+    "phone": "911",
+    "city": "Nabu",
+    "country": "Georgia"
+  },
+  {
+    "first_name": "Taras",
+    "last_name": "Myrnyi",
+    "phone": "621",
+    "city": "Kyiv",
+    "country": "Ukraine"
+  },
+  {
+    "first_name": "Yoko",
+    "last_name": "Hama",
+    "phone": "123",
+    "city": "Tokio",
+    "country": "Japan"
+  }
+]
