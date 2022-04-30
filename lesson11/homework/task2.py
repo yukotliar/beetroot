@@ -54,31 +54,37 @@ def read_commands():
           "exit - вихід з програми", sep='\n')
     command = input('Введіть команду: ')
     if command == 'n':
-        pass
+        save_data(input_contact())
     elif command in ['sf', 'sl', 'sfl', 'sp', 'sct', 'sc']:
-        search(command, input('Введіть запит для пошуку: '))
+        try:
+            print_result(search(command, input('Введіть запит для пошуку: ')))
+        except TypeError:
+            print('За вашим запитом нічого не знайдено')
     elif command == 'up':
-        pass
+        update(input('Введіть номер телефону: '))
     elif command == 'del':
         delete(input('Введіть номер телефону: '))
     elif command == 'exit':
-        pass
+        quit()
     else:
         print('Введена вами команда не коректна')
 
 
 def print_result(results):
-    for result in results:
-        print(f'Контакт {result["first_name"]} {result["last_name"]} з номером {result["phone"]} '
-              f'проживає в {result["country"]} {result["city"]}')
+        print(f'Контакт {results["first_name"]} {results["last_name"]} з номером {results["phone"]} '
+              f'проживає в {results["country"]} {results["city"]}')
 
 
 def save_data(data):
     with open('data.json', 'r') as data_file:
-        database = json.load(data_file)
-    with open('data.json', 'w') as data_file:
-        database.append(data)
-        json.dump(database, data_file, indent=2)
+        try:
+            database = json.load(data_file)
+            with open('data.json', 'w') as data_file:
+                database.append(data)
+                json.dump(database, data_file, indent=2)
+                print('Контакт збережено')
+        except json.decoder.JSONDecodeError:
+            print('Ваша база даних не валідна')
 
 
 def search(command, request):
@@ -88,27 +94,43 @@ def search(command, request):
         for item in database:
             if item['first_name'] + ' ' + item['last_name'] == request:
                 return item
-            else:
-                return 'За вашим запитом нічого не знайдено'
     else:
         for item in database:
             if item[search_data[command]] == request:
                 return item
-            else:
-                return 'За вашим запитом нічого не знайдено'
 
 
 def delete(phone):
     with open('data.json', 'r') as data_file:
-        database = list(json.load(data_file))
+        database = json.load(data_file)
     with open('data.json', 'w') as data_file:
         for item in database:
             if item['phone'] == phone:
                 database.remove(item)
                 json.dump(database, data_file, indent=2)
+                print('Контакт видалено')
             else:
-                return 'За вашим запитом нічого не знайдено'
+                print('За вашим запитом нічого не знайдено')
+
+
+def update(phone):
+    print("Доступні для оновлення параметри:",
+          "sf - ім'я",
+          "sl - прізвище",
+          "sp - телефон",
+          "sct - місто",
+          "sc - країна", sep='\n')
+    command = input('Введіть параметр: ')
+    new_value = input('Введіть новий параметр: ')
+    with open('data.json', 'r') as data_file:
+        database = json.load(data_file)
+    with open('data.json', 'w') as data_file:
+        for item in database:
+            if item['phone'] == phone:
+                item[search_data[command]] = new_value
+                json.dump(database, data_file, indent=2)
+                print('Дані збережено')
+
 
 if __name__ == '__main__':
-    # save_data(input_contact())
     read_commands()
