@@ -15,4 +15,4 @@ class Dog:
 
 dog1 = Dog('Sidor', 'Scotish', 3)
 human_eq = dog1.human_age(dog1.dog_age)
-print(f'{dog1.name} of a {dog1.breed} breed, age {dog1.dog_age}, it is {human_eq} in human equivalent.')
+print(f'{dog1.name} of a {dog1.breed} breed, age {dog1.dog_age}, it\'s {human_eq} in human equivalent.')
