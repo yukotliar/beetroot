@@ -13,7 +13,7 @@ class Person:
         self.name = name
 
     def who(self, gender, age, name):
-        print(f'I\'m {age}, my name is {name}, and gender is {gender})
+        print(f'I\'m {age}, my name is {name}, and gender is {gender}')
 
 
 class Student(Person):
