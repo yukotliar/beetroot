@@ -27,26 +27,55 @@ class Product:
         self.name = name
         self.price = price
 
-class ProductStore:
-    def __init__(self, product):
-        
-    def add(self, product, amount):
 
-    def set_discount(self, identifier, percent, identifier_type='name'):
+class ProductStore:
+    product_list = []
+
+    def add(self, product,
+            amount):  # adds a specified quantity of a single product with a predefined price premium for your store (30 percent)
+        product.amount = amount
+        product.price = round(product.price * 1.3, 2)
+        self.product_list.append([product.type, product.name, product.amount, product.price])
+
+    def set_discount(self, identifier, percent,
+                     identifier_type='name'):  # adds a discount for all products specified by input
+        #     identifiers (type or name).The discount must be specified in percentage
+        fraction_percent = percent / 100
+        if identifier_type == 'name':
+            for i in self.product_list:
+                print(i)
+                print(identifier)
+                if i[1] == identifier:
+                    i[3] = round(i[3] - (i[3] * fraction_percent), 2)
+                else:
+                    raise ValueError
+        else:
+            if identifier_type == 'type':
+                for i in self.product_list:
+                    if i[0] == identifier:
+                        i[3] = round(i[3] - (i[3] * fraction_percent), 2)
+                    else:
+                        raise ValueError
 
     def identifiers(self, type):
+        pass
 
     def sell_product(self, product_name, amount):
+        pass
 
     def get_income():
+        pass
 
     def get_all_products():
+        pass
 
     def get_product_info(product_name):
+        pass
+
 
 p = Product('Sport', 'Football T-Shirt', 100)
 
-p2 = Product(Food, 'Ramen, 1.5)
+p2 = Product('Food', 'Ramen', 1.5)
 
 s = ProductStore()
 
@@ -54,6 +83,10 @@ s.add(p, 10)
 
 s.add(p2, 300)
 
-s.sell(‘Ramen’, 10)
+s.set_discount('Ramen', 10, identifier_type='name')
 
-assert s.get_product_info(‘Ramen’) == (‘Ramen’, 290)
+print(s.product_list)
+
+# s.sell(‘Ramen’, 10)
+#
+# assert s.get_product_info(‘Ramen’) == (‘Ramen’, 290)
