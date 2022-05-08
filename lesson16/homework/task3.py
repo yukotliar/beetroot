@@ -28,8 +28,10 @@ class Product:
         self.price = price
 
 
-class ProductStore:
-    product_list = []
+class ProductStore(Product):
+    def __init__(self):
+        self.product_list = []
+        self.income = 0
 
     def add(self, product,
             amount):  # adds a specified quantity of a single product with a predefined price premium for your store (30 percent)
@@ -43,34 +45,39 @@ class ProductStore:
         fraction_percent = percent / 100
         if identifier_type == 'name':
             for i in self.product_list:
-                print(i)
-                print(identifier)
                 if i[1] == identifier:
                     i[3] = round(i[3] - (i[3] * fraction_percent), 2)
-                else:
-                    raise ValueError
         else:
             if identifier_type == 'type':
                 for i in self.product_list:
                     if i[0] == identifier:
                         i[3] = round(i[3] - (i[3] * fraction_percent), 2)
-                    else:
-                        raise ValueError
 
-    def identifiers(self, type):
-        pass
+    def sell_product(self, product_name, amount):  # removes a particular amount of products from the store
+        # if available, in other case raises an error. It also increments income if the sell_product method succeeds
+        for i in self.product_list:
+            if i[1] != product_name:
+                pass
+            else:
+                if i[2] < amount:
+                    raise ValueError
+                else:
+                    i[2] -= amount
+                    self.income += round(amount * i[3], 2)
 
-    def sell_product(self, product_name, amount):
-        pass
 
-    def get_income():
-        pass
+    def get_income(self): # returns amount of many earned by ProductStore instance
+        return self.income
 
-    def get_all_products():
-        pass
+    def get_all_products(self): # returns information about all available products in the store
+        return self.product_list
 
-    def get_product_info(product_name):
-        pass
+    def get_product_info(self, product_name): # returns a tuple with product name and amount of items in the store
+        list = []
+        for i in self.product_list:
+            if i[1] == product_name:
+                list += i[1], i[2]
+        return tuple(list)
 
 
 p = Product('Sport', 'Football T-Shirt', 100)
@@ -83,10 +90,16 @@ s.add(p, 10)
 
 s.add(p2, 300)
 
-s.set_discount('Ramen', 10, identifier_type='name')
+s.set_discount('Ramen', 10)
 
-print(s.product_list)
+s.set_discount('Sport', 10, identifier_type='type')
 
-# s.sell(‘Ramen’, 10)
-#
-# assert s.get_product_info(‘Ramen’) == (‘Ramen’, 290)
+s.sell_product('Ramen', 10)
+
+print(s.get_all_products())
+
+print(s.get_income())
+
+print(s.get_product_info('Ramen'))
+
+assert s.get_product_info('Ramen') == ('Ramen', 290)
