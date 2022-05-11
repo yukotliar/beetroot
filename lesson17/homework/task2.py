@@ -50,6 +50,12 @@ class Library:  # Library - name, books = [], authors = []
                 year_filter.append(book)
         return year_filter
 
+    def __repr__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
+
 class Book:  # Book - name, year, author (author must be an instance of Author class)
     amount = 0
 
@@ -58,18 +64,30 @@ class Book:  # Book - name, year, author (author must be an instance of Author c
         self.year = year
         self.author = author
 
+    def __repr__(self):
+        return f' The book called {self.name}, released at {self.year}, it\'s author name is {self.author}'
+
+    def __str__(self):
+        return f' The book called {self.name}, released at {self.year}, it\'s author name is {self.author}'
+
+
 class Author:  # Author - name, country, birthday, books = []
     def __init__(self, name, country, birthday):
         self.name = name
         self.country = country
         self.birthday = birthday
 
+    def __repr__(self):
+        return f'{self.name} from {self.country} born {self.birthday}'
+
+    def __repr__(self):
+        return f'{self.name} from {self.country} born {self.birthday}'
+
+lib = Library('Libre')
 
 aut1 = Author('John', 'USA', '05.06.1901')
 aut2 = Author('Clark', 'Sweden', '04.03.1912')
 aut3 = Author('Jane', 'UK', '06.07.1921')
-
-lib = Library('Libre')
 
 lib.new_book('Love', 1921, aut1)
 lib.new_book('Fate', 1922, aut1)
@@ -83,3 +101,4 @@ print(lib.group_by_year(1922))
 
 print(Book.amount)
 
+print(lib)
