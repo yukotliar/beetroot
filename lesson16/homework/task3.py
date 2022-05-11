@@ -28,7 +28,7 @@ class Product:
         self.price = price
 
 
-class ProductStore(Product):
+class ProductStore:
     def __init__(self):
         self.product_list = []
         self.income = 0
