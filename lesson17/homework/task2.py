@@ -80,7 +80,7 @@ class Author:  # Author - name, country, birthday, books = []
     def __repr__(self):
         return f'{self.name} from {self.country} born {self.birthday}'
 
-    def __repr__(self):
+    def __str__(self):
         return f'{self.name} from {self.country} born {self.birthday}'
 
 lib = Library('Libre')
