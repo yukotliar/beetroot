@@ -3,7 +3,7 @@
 # use replace
 
 def stop_words(words):
-    def decorator(func):
+    def inner(func):
         def wrap(*args):
             phrase = func(*args)
             new_phrase = phrase
@@ -11,9 +11,10 @@ def stop_words(words):
                 if i in phrase:
                     new_phrase = new_phrase.replace(i, "*")
             return new_phrase
+
         return wrap
 
-    return decorator
+    return inner
 
 
 @stop_words(['pepsi', 'BMW'])
