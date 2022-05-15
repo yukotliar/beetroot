@@ -17,3 +17,4 @@ class Email:
 
 
 ron = Email('ronald@gmail.com')
+ben = Email('@gmail.com')
