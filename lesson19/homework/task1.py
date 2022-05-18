@@ -3,9 +3,11 @@
 import string
 import random
 
+
 def with_index(iterable, start=0):
     for i in range(len(iterable)):
-        yield start+i, iterable[i]
+        yield start + i, iterable[i]
+
 
 test_list = [random.choices(string.ascii_uppercase) for i in range(9)]
 
