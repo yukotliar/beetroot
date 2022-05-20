@@ -65,10 +65,10 @@ class Book:  # Book - name, year, author (author must be an instance of Author c
         self.author = author
 
     def __repr__(self):
-        return f' The book called {self.name}, released at {self.year}, it\'s author name is {self.author}'
+        return f'The book called {self.name}, released at {self.year}, it\'s author name is {self.author}'
 
     def __str__(self):
-        return f' The book called {self.name}, released at {self.year}, it\'s author name is {self.author}'
+        return f'The book called {self.name}, released at {self.year}, it\'s author name is {self.author}'
 
 
 class Author:  # Author - name, country, birthday, books = []
@@ -83,22 +83,22 @@ class Author:  # Author - name, country, birthday, books = []
     def __str__(self):
         return f'{self.name} from {self.country} born {self.birthday}'
 
-lib = Library('Libre')
-
-aut1 = Author('John', 'USA', '05.06.1901')
-aut2 = Author('Clark', 'Sweden', '04.03.1912')
-aut3 = Author('Jane', 'UK', '06.07.1921')
-
-lib.new_book('Love', 1921, aut1)
-lib.new_book('Fate', 1922, aut1)
-lib.new_book('Hope', 1922, aut2)
-lib.new_book('Sun', 1933, aut2)
-lib.new_book('Soul', 1941, aut3)
-
-print(lib.group_by_author(aut1))
-
-print(lib.group_by_year(1922))
-
-print(Book.amount)
-
-print(lib)
+# lib = Library('Libre')
+#
+# aut1 = Author('John', 'USA', '05.06.1901')
+# aut2 = Author('Clark', 'Sweden', '04.03.1912')
+# aut3 = Author('Jane', 'UK', '06.07.1921')
+#
+# lib.new_book('Love', 1921, aut1)
+# lib.new_book('Fate', 1922, aut1)
+# lib.new_book('Hope', 1922, aut2)
+# lib.new_book('Sun', 1933, aut2)
+# lib.new_book('Soul', 1941, aut3)
+#
+# print(lib.group_by_author(aut3))
+#
+# print(lib.group_by_year(1922))
+#
+# print(Book.amount)
+#
+# print(lib)

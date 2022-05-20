@@ -60,7 +60,7 @@ class TypeDecorators:
 @TypeDecorators.to_int
 def make_int(string: str):
     return string
-
+w
 
 @TypeDecorators.to_bool
 def make_bool(string: str):
