@@ -1,21 +1,28 @@
-# Релізувати контекстний менеджер для open() за допомогою функцій та декоратора
-from contextlib import contextmanager
+class OpenFile:
+    counter = 0
+
+    def __init__(self, file_name, mode):
+        self.file_name = file_name
+        self.mode = mode
+        self.file = None
+
+    @classmethod
+    def get_num_of_usage(cls):
+        return cls.counter
+
+    def __enter__(self):
+        OpenFile.counter += 1
+        print('Start reading file')
+        self.file = open(self.file_name, self.mode)
+        return self.file
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.file:
+            print(f'Closing context, number of contexts is {self.counter}')
+            self.file.close()
 
 
-@contextmanager
-def open_file(in_file, mode):
-    try:
-        file = open(in_file, mode)
-        yield file
-    except Exception as exc:
-        print(exc)
-    finally:
-        try:
-            file.close()
-        except:
-            yield None
+with OpenFile('test.txt', 'r') as file:
+    print(file.read())
 
-
-with open_file('test.txt', 'r') as myfile:
-    if myfile:
-        print(myfile.read())
+# Розширити атрибути класу та добавити перевірку на помилки при закритті файлу

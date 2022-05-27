@@ -7,7 +7,7 @@ from unittest import TestCase
 
 
 class TestLib(TestCase):
-    def setUp(self) -> None:
+    def setUp(self):
         self.lib = Library('Libre')
         self.aut1 = Author('John', 'USA', '05.06.1901')
         self.aut2 = Author('Clark', 'Sweden', '04.03.1912')
