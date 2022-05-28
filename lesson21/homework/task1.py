@@ -6,10 +6,6 @@ class OpenFile:
         self.mode = mode
         self.file = None
 
-    @classmethod
-    def get_num_of_usage(cls):
-        return cls.counter
-
     def __enter__(self):
         OpenFile.counter += 1
         print('Start reading file')
@@ -19,10 +15,10 @@ class OpenFile:
     def __exit__(self, exc_type, exc_val, exc_tb):
         if self.file:
             print(f'Closing context, number of contexts is {self.counter}')
-            self.file.close()
+        self.file.close()
 
 
-with OpenFile('test.txt', 'r') as file:
-    print(file.read())
+# with OpenFile('test.txt', 'r') as file:
+#     print(file.read())
 
 # Розширити атрибути класу та добавити перевірку на помилки при закритті файлу
