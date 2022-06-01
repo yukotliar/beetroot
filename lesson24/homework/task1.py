@@ -24,14 +24,14 @@ search_data = {
 field_names = ["ім'я", "прізвище", "номер телефону", "місто", "країну"]
 
 
-def input_contact():
-    our_data = new_data.copy()
+def input_contact() -> Dict:
+    our_data: Dict = new_data.copy()
     for key, name in zip(our_data.keys(), field_names):
         our_data[key] = input(f'Введіть {name}: ')
     return our_data
 
 
-def read_commands():
+def read_commands() -> None:
     print("Достпуні команди:",
           "n - створити новий запис",
           "sf - пошук за ім'ям",
@@ -43,7 +43,7 @@ def read_commands():
           "up - оновення запису",
           "del - видалити запис",
           "exit - вихід з програми", sep='\n')
-    command = input('Введіть команду: ')
+    command: str = input('Введіть команду: ')
     if command == 'n':
         save_data(input_contact())
     elif command in ['sf', 'sl', 'sfl', 'sp', 'sct', 'sc']:
@@ -61,15 +61,15 @@ def read_commands():
         print('Введена вами команда не коректна')
 
 
-def print_result(results: Any):
+def print_result(results: Any) -> None:
     print(f'Контакт {results["first_name"]} {results["last_name"]} з номером {results["phone"]} '
           f'проживає в {results["country"]} {results["city"]}')
 
 
-def save_data(data: Dict):
+def save_data(data: Dict) -> None:
     with open('data.json', 'r') as data_file:
         try:
-            database = json.load(data_file)
+            database: List = json.load(data_file)
             with open('data.json', 'w') as data_file:
                 database.append(data)
                 json.dump(database, data_file, indent=2)
@@ -78,9 +78,9 @@ def save_data(data: Dict):
             print('Ваша база даних не валідна')
 
 
-def search(command: str, request: str):
+def search(command: str, request: str) -> Any:
     with open('data.json', 'r') as data_file:
-        database = json.load(data_file)
+        database: List = json.load(data_file)
     if command == 'sfl':
         for item in database:
             if item['first_name'] + ' ' + item['last_name'] == request:
@@ -91,9 +91,9 @@ def search(command: str, request: str):
                 return item
 
 
-def delete(phone: str):
+def delete(phone: str) -> None:
     with open('data.json', 'r') as data_file:
-        database = json.load(data_file)
+        database: List = json.load(data_file)
     with open('data.json', 'w') as data_file:
         for item in database:
             if item['phone'] == phone:
@@ -104,17 +104,17 @@ def delete(phone: str):
                 print('За вашим запитом нічого не знайдено')
 
 
-def update(phone: str):
+def update(phone: str) -> None:
     print("Доступні для оновлення параметри:",
           "sf - ім'я",
           "sl - прізвище",
           "sp - телефон",
           "sct - місто",
           "sc - країна", sep='\n')
-    command = input('Введіть параметр: ')
-    new_value = input('Введіть новий параметр: ')
+    command: str = input('Введіть параметр: ')
+    new_value: str = input('Введіть новий параметр: ')
     with open('data.json', 'r') as data_file:
-        database = json.load(data_file)
+        database: List = json.load(data_file)
     with open('data.json', 'w') as data_file:
         for item in database:
             if item['phone'] == phone:
