@@ -24,13 +24,13 @@ class Queue:
         return self.__repr__()
 
 
-if __name__ == "__main__":
-    q = Queue()
-    q.enqueue(4)
-    q.enqueue('dog')
-    q.enqueue(True)
-    print(q.size())
-    print(q)
-    print(q.dequeue())
-    print(q.dequeue())
-    print(q.dequeue())
+# if __name__ == "__main__":
+#     q = Queue()
+#     q.enqueue(4)
+#     q.enqueue('dog')
+#     q.enqueue(True)
+#     print(q.size())
+#     print(q)
+#     print(q.dequeue())
+#     print(q.dequeue())
+#     print(q.dequeue())
