@@ -1,0 +1,9 @@
+sqlite3 DatabaseName.db
+create table employees(name char(20), age int(3), job char(20), salary int(3));
+alter table employees add column hobby char(20);
+alter table employees rename to toddlers;
+insert into toddlers values('Tim', '1', 'Toddler', '3000', 'Crawling');
+insert into toddlers values('Jake', '2', 'Toddler', '5000', 'Walking');
+update toddlers set salary = '3500' where name = 'Tim';
+delete from toddlers where name = 'Jake';
+

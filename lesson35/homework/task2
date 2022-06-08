@@ -1,0 +1,6 @@
+select first_name, last_name from employees;
+select distinct department_id from employees;
+select * from employees order by first_name desc;
+select first_name, last_name, salary, salary*0.12 from employees;
+select max(salary), min(salary) from employees;
+select round(salary/12, 2) from employees;
