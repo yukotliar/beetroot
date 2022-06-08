@@ -1,4 +1,4 @@
-select first_name, last_name from employees;
+select first_name as 'First name', last_name as 'Last name' from employees;
 select distinct department_id from employees;
 select * from employees order by first_name desc;
 select first_name, last_name, salary, salary*0.12 from employees;
