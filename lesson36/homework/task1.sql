@@ -1,0 +1,10 @@
+select first_name, last_name, department.department_id, department_name from employees inner join department on employees.department_id = department.department_id;
+select first_name, last_name, department_name, city, state_province from employees inner join department on employees.department_id = department.department_id inner join locations on department.location_id = locations.location_id;
+select first_name, last_name, department.department_id, department_name from employees inner join department on employees.department_id = department.department_id where employees.department_id = '80' or employees.department_id = '40';
+select department_name from department;
+select first_name, manager_id from employees;
+select job_title, first_name || ' ' || last_name as 'full_name', max_salary-salary as 'difference' from employees inner join jobs on employees.job_id = jobs.job_id;
+select job_title, (max_salary+min_salary)/2 as 'avg_salary' from jobs;
+select first_name || ' ' || last_name as 'full_name', salary from employees inner join department on employees.department_id = department.department_id inner join locations on department.location_id = locations.location_id where city = 'London';
+select department_name, count(employees.department_id) as count from department inner join employees on department.department_id = employees.department_id;
+select department_name, count(*) as count from employees inner join department d on employees.department_id = d.department_id group by department_name;
