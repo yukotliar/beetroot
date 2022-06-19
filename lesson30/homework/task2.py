@@ -31,6 +31,6 @@ def fibonacci_search(list, target):
     return None
 
 list = list(range(101))
-print(fibonacci_search(list, 9))
+
 print(fibonacci_search(list, 99))
 print(fibonacci_search(list, 999))
