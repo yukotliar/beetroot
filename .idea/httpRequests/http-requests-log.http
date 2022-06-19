@@ -1,0 +1,6 @@
+GET http://api.weatherapi.com/v1/current.json
+
+<> 2022-06-19T170729.401.json
+
+###
+
